@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Supplier Detail</title>
+    <link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <script src="/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div class="container">
+    <h1>Supplier Detail</h1>
+    <form action="#" th:action="@{/supplier/delete}" th:object="${supplier}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <h4>name: <span th:text="${supplier.name}"></span></h4>
+        <h4>Phone: <span th:text="${supplier.phone}"></span></h4>
+        <p>
+            <button class="btn btn-danger" type="submit">删除</button>
+        </p>
+    </form>
+</div>
+</body>
+</html>

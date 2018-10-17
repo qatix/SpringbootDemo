@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qatix.hello.dao.WorkerMapper">
+  <resultMap id="BaseResultMap" type="com.qatix.hello.entity.Worker">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="base_salary" jdbcType="DECIMAL" property="baseSalary" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+  </resultMap>
+
+  <select id="selectListByNameAndSalary" resultType="Worker">
+    select id,name,base_salary from worker
+  </select>
+</mapper>

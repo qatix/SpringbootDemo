@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Supplier Not Found</title>
+    <link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <script src="/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div class="container">
+    <h1>Supplier Not Fund By Id:<span th:text="${id}"></span></h1>
+
+    <a class="btn btn-success" th:href="@{/supplier/list}">去列表</a>
+</div>
+</body>
+</html>

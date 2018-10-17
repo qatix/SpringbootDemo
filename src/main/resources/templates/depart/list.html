@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Supplier List</title>
+    <link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <script src="/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div class="container" id="app">
+    <h1>{{title}}</h1>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>ParentId</th>
+        </tr>
+        <tr v-for="department in departments">
+            <td>{{department.id}}</td>
+            <td>{{department.name}}</td>
+            <td>{{department.parentId}}</td>
+        </tr>
+    </table>
+
+    <a v-on:click="loadData()" class="btn btn-primary">refresh</a>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            title: 'Hello Vue! This is department',
+            departments: []
+        },
+        mounted: function () {
+            console.log('mounted');
+            var self = this;
+            axios.get('/department/list')
+                .then(function (response) {
+                    if (response.status == 200) {
+                        if (response.data.code == 200) {
+                            self.departments = response.data.data;
+                        }
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        methods: {
+            loadData: function () {
+                axios.get('/department/list')
+                    .then(function (response) {
+                        console.log(response);
+                        if (response.status == 200) {
+                            if (response.data.code == 200) {
+                                app.departments = response.data.data;
+                                console.log('set departments');
+                                console.log(app.departments);
+                            }
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        }
+    })
+</script>
+</body>
+</html>
